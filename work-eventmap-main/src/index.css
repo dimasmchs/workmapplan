@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 100% 96%;
+    --foreground: 198 89% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 198 89% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 198 89% 18%;
+    --primary: 198 89% 28%;
+    --primary-foreground: 48 100% 96%;
+    --secondary: 205 20% 92%;
+    --secondary-foreground: 198 89% 22%;
+    --muted: 205 20% 94%;
+    --muted-foreground: 205 20% 37%;
+    --accent: 196 100% 44%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 196 100% 44%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --font-heading: ui-sans-serif, system-ui, sans-serif;
+    --font-body: ui-sans-serif, system-ui, sans-serif;
+    --font-display: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: #fff;
+  }
+  }
+
+  @layer components {
+  /* ===== Leaflet base ===== */
+  .leaflet-container {
+    font-family: var(--font-body);
+    background: #eef3f6;
+  }
+  .leaflet-control-zoom a {
+    background: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 6px 18px -6px hsl(198 89% 22% / 0.5) !important;
+    transition: transform .15s ease, background .15s ease !important;
+  }
+  .leaflet-control-zoom a:hover {
+    background: hsl(var(--accent)) !important;
+    transform: translateY(-1px);
+  }
+  .leaflet-control-zoom {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 16px !important;
+  }
+  .leaflet-control-zoom-in { margin-bottom: 6px !important; }
+  .leaflet-bar { border: none !important; box-shadow: none !important; }
+  .leaflet-control-attribution {
+    background: hsl(48 100% 96% / 0.85) !important;
+    color: hsl(205 20% 37%) !important;
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    border-radius: 8px 0 0 0 !important;
+  }
+  .leaflet-control-attribution a { color: hsl(198 89% 28%) !important; }
+
+  /* ===== Facility pins ===== */
+  .facility-pin { background: transparent !important; border: none !important; }
+  .pin-shell {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 8px 22px -8px hsl(198 89% 18% / 0.6);
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, background .18s ease;
+    cursor: pointer;
+  }
+  .pin-shell:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 14px 30px -8px hsl(198 89% 18% / 0.7);
+  }
+  .pin-shell.selected {
+    background: hsl(var(--accent));
+    transform: scale(1.12);
+    box-shadow: 0 16px 34px -6px hsl(196 100% 40% / 0.7);
+  }
+  .pin-icon { display: grid; place-items: center; line-height: 0; }
+  .pin-icon svg { width: 22px; height: 22px; }
+  .pin-live-badge {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    background: hsl(var(--accent));
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    padding: 2px 6px;
+    border-radius: 999px;
+    border: 2px solid hsl(var(--primary-foreground));
+    box-shadow: 0 4px 10px -2px hsl(196 100% 40% / 0.6);
+  }
+  .pin-shell.live::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 20px;
+    border: 2px solid hsl(var(--accent));
+    animation: pin-pulse 2s ease-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pin-pulse {
+    0% { transform: scale(.85); opacity: .8; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  .pin-shell.dimmed { opacity: .3; transform: scale(.85); }
+  .pin-shell.dimmed:hover { transform: scale(.85); }
+
+  /* ===== Floating UI cards ===== */
+  .glass-card {
+    background: hsl(48 100% 96% / 0.82);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid hsl(198 89% 28% / 0.12);
+    box-shadow: 0 12px 40px -12px hsl(198 89% 18% / 0.35);
+  }
+  .tag-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+  }
+  }
+
+  @layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .drawer-enter { animation: drawer-in .42s cubic-bezier(.22,1,.36,1); }
+  @keyframes drawer-in {
+    from { transform: translateX(24px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  .fade-up { animation: fade-up .5s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes fade-up {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .mesh-blob { position: absolute; border-radius: 9999px; filter: blur(64px); opacity: 0.5; mix-blend-mode: multiply; will-change: transform; }
+  @keyframes mesh-drift-1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-30px) scale(1.15); } }
+  @keyframes mesh-drift-2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-34px,38px) scale(1.12); } }
+  @keyframes mesh-drift-3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(26px,28px) scale(1.2); } }
+  .animate-mesh-1 { animation: mesh-drift-1 16s ease-in-out infinite; }
+  .animate-mesh-2 { animation: mesh-drift-2 20s ease-in-out infinite; }
+  .animate-mesh-3 { animation: mesh-drift-3 24s ease-in-out infinite; }
+  }
